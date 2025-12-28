@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  font-family:Verdana;
+}
+
+body {
+  background-color: white;
+}
+
+#topNavTitle {
+  color: #7c3aed;
+}
+
+#topNavLoginDataNpub {
+  color: #606770;
+  word-break: break-all;
+}
+
+.menuLink {
+  color: #1c1e21;
+}
+
+.contentTitle {
+  color: #7c3aed;
+}
+
+.contentSubTitle {
+  color: #1c1e21;
+}
+
+.contentText {
+  color: #1c1e21;
+  word-break: break-all;
+}
+
+.contentList {
+  color: #1c1e21;
+  word-wrap: break-word;
+}
+
+.feedbackText {
+  color: #7c3aed;
+}
+
+.bottomNavHeader {
+  color: #7c3aed;
+}
+
+.bottomNavText {
+  color: #606770;
+}
+
+.bottomNavLink {
+  color: #606770;
+}
