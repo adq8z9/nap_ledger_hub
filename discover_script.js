@@ -19,7 +19,7 @@ async function discoverAccountingLedgerView() {
       for (let i = 0; i < discoveredLedgerEvents.length; i++) {
         let name = "";
         let naddr = "";
-        let addr = "";
+        let reference = "";
         try {
           let content = JSON.parse(discoveredLedgerEvents[i].content);
           console.log(content);
@@ -36,11 +36,11 @@ async function discoverAccountingLedgerView() {
             }
           }
           naddr = NostrTools.nip19.naddrEncode( { "identifier": d, "relays": r, "pubkey": discoveredLedgerEvents[i].pubkey, "kind": discoveredLedgerEvents[i].kind } );
-          addr = discoveredLedgerEvents[i].kind + ":" + discoveredLedgerEvents[i].pubkey + ":" + d;
+          reference = discoveredLedgerEvents[i].kind + ":" + discoveredLedgerEvents[i].pubkey + ":" + d;
         } catch (error) {
           name = "Error reading Event.";
         }
-        discoveredAccountingLedgerEventsList += "<li>Name: " + name + ", <br>Naddr: " + naddr + ", <br>addr: " + addr + "</li>"; 
+        discoveredAccountingLedgerEventsList += "<li>Name: " + name + ", <br>Reference: " + reference + ", <br>Naddr: " + naddr + "</li>"; 
       }
       document.getElementById("discoverAccountingLedgerViewList").innerHTML = discoveredAccountingLedgerEventsList;
     } catch (error) {
