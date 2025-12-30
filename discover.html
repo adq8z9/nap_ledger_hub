@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Nap - Nostr accounting program</title>
+    <link rel="icon" type="image/png" href="nap.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index_style.css">
+    <script src="discover_script.js"></script>
+	  <script src="index_script_logindata.js"></script>
+	  <script src="index_script_relaycomm.js"></script>
+	  <script src="nostr_tools.js"></script>
+  </head>
+
+  <body onload="defaultOpen()">
+    <h1 id="topNavTitle">Nostr accounting program (nap) - Accounting Ledger Hub</h1>
+    <p style="color:red">Note: This tool is just a simple test-program. Don't use it for real application and use example data just for throw-away purposes.</p>
+    <p id="topNavLoginDataNpub"><b>Currently logged in:</b> not logged in</p>
+	  <a class="menuLink" href="index.html">&lt;-- Back</a><br>
+	  <h3 class="contentTitle">Discover Accounting Ledgers</h3>
+	  <h4 class="contentSubTitle">discover accounting ledger events:</h4>
+	  <p class="contentText">Input relay for search in format ws://... or wss://... : </p>
+	  <form>
+      <label>Select relay: </label>
+      <input type="text" id="relay">
+	    <br><br>
+      <input type="button" value="search accounting ledger events" onclick="discoverAccountingLedgerView()">
+    </form>
+	  <p id="discoverAccountingLedgerViewFeedback" class="feedbackText"></p>
+	  <ul id="discoverAccountingLedgerViewList" class="contentList"></ul>
+    <img src="nap.png" alt="" style="width:65px;height:48px;">
+  </body>
+</html>
