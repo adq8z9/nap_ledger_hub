@@ -40,7 +40,7 @@ async function discoverAccountingLedgerView() {
         } catch (error) {
           name = "Error reading Event.";
         }
-        discoveredAccountingLedgerEventsList += "<li>Name: " + name + ", <br>Reference: " + reference + ", <br>Naddr: " + naddr + "</li>"; 
+        discoveredAccountingLedgerEventsList += "<li>Name: " + name + ", <br>Reference-ID: " + reference + ", <br>Naddr: " + naddr + "</li>"; 
       }
       document.getElementById("discoverAccountingLedgerViewList").innerHTML = discoveredAccountingLedgerEventsList;
     } catch (error) {
