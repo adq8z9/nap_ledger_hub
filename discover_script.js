@@ -23,20 +23,9 @@ async function discoverAccountingLedgerView() {
         try {
           let content = JSON.parse(discoveredLedgerEvents[i].content);
           console.log(content);
-          name = content.name;
-          let d = "";
-          let r = [];
-          let k = 0;
-          for (let j = 0; j < discoveredLedgerEvents[i].tags.length; j++) {
-            if (discoveredLedgerEvents[i].tags[j][0] == 'd') {
-              d = discoveredLedgerEvents[i].tags[j][1];
-            }
-            if (discoveredLedgerEvents[i].tags[j][0] == 'r') {
-              r[k] = discoveredLedgerEvents[i].tags[j][1];
-            }
-          }
-          naddr = NostrTools.nip19.naddrEncode( { "identifier": d, "relays": r, "pubkey": discoveredLedgerEvents[i].pubkey, "kind": discoveredLedgerEvents[i].kind } );
-          reference = discoveredLedgerEvents[i].kind + ":" + discoveredLedgerEvents[i].pubkey + ":" + d;
+          name = getAccountingLedgerName(discoveredLedgerEvents[i]);
+          reference = getAccountingLedgerReference(discoveredLedgerEvents[i]);
+          naddr = getAccountingLedgerNaddr(discoveredLedgerEvents[i]);
         } catch (error) {
           name = "Error reading Event.";
         }
