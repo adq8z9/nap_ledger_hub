@@ -1,3 +1,36 @@
+async function getLedgerEvent(naddrLedger, secK) {
+  const pool = new NostrTools.SimplePool();
+  const relays = naddrLedger.data.relays;
+  console.log("Naddr relays: " + relays);
+  console.log("Get Ledger event.");
+  if (relays == "") {
+    throw "No Relay-hint in naddr.";
+  }
+  function authF(eventA) {
+    console.log("Relay authentication.");
+    return NostrTools.finalizeEvent(eventA, secK);
+  }
+  const event = await pool.get(
+    relays,
+    {
+      kinds: [37701],
+      '#d': [naddrLedger.data.identifier],
+      authors: [naddrLedger.data.pubkey]
+    },
+    { onauth : authF }
+  );
+  console.log('Event from Relay: ', event);
+  if (event == null) { 
+    throw "Event not found on relay."; 
+  } else if (!NostrTools.verifyEvent(event)) {
+    throw "Not valid event received from relay.";
+  } else if (event.kind != 37701 || event.pubkey != naddrLedger.data.pubkey || getAccountingLedgerIdentifier(event) != naddrLedger.data.identifier) {
+    throw "Not correct event received from relay.";
+  } else {
+    return event; 
+  }
+}
+
 async function getLedgerEvents(dRelays, secK) {
   const pool = new NostrTools.SimplePool();
   const relays = dRelays;
