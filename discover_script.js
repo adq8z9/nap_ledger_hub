@@ -34,6 +34,7 @@ async function discoverAccountingLedgerView() {
       document.getElementById("discoverAccountingLedgerViewList").innerHTML = discoveredAccountingLedgerEventsList;
     } catch (error) {
       document.getElementById("discoverAccountingLedgerViewFeedback").innerHTML = "Accounting Ledger Discovery Failed: " + error;
+      document.getElementById("discoverAccountingLedgerViewList").innerHTML = "<li>...</li>";
     }
   } else {
     document.getElementById("discoverAccountingLedgerViewFeedback").innerHTML = "No account logged in. Log in account before searching.";
