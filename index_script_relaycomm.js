@@ -3,6 +3,9 @@ async function getLedgerEvents(dRelays, secK) {
   const relays = dRelays;
   console.log("Discovery relays: " + relays);
   console.log("Get Ledger events.");
+  if (relays == "") {
+    throw "No Relay selected.";
+  }
   function authF(eventA) {
     console.log("Relay authentication.");
     return NostrTools.finalizeEvent(eventA, secK);
