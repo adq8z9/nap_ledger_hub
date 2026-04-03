@@ -49,7 +49,7 @@ async function viewAccountingLedgerView() {
       console.log(ledgerViewListString);
       let ledgerMetadataString = "Ledger Name: " + ledgerEventContent.name + "<br><br>Accountants: ";
       for (let i = 0; i < evLedgerAccountants.length; i++) {
-        npubAcc = NostrTools.nip19.npubEncode(ledgerEventContent.acc_accountants[i].pubkey);
+        npubAcc = NostrTools.nip19.npubEncode(ledgerEventContent.acc_accountants[i].pubkey[0]);
         ledgerMetadataString += ledgerEventContent.acc_accountants[i].name + " (" + npubAcc.slice(0,8) + "..." + npubAcc.slice(-8);
         for (let j = 0; j < evLedgerAccountantCategories.length; j++) {
           if (evLedgerAccountants[i].parent_id == evLedgerAccountantCategories[j].id) {
